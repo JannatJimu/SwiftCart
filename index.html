@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SwiftCart</title>
+    <link rel="shortcut icon" href="./assets/fav_icon1.jpg" type="image/x-icon">
+    <!-- font-awesome cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- tailwind + daisy ui cdn -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- font integration -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- styles  -->
+    <link rel="stylesheet" href="./styles/style.css">
+
+</head>
+
+<body>
+    <navbar class="">
+        <div class="navbar bg-base-100  w-10/12 mx-auto">
+            <div class="navbar-start">
+                <a class="font-bold text-2xl text-blue-700">SwiftCart</a>
+            </div>
+            <div class="navbar-center hidden lg:flex">
+                <ul class="menu menu-horizontal px-1 text-gray-800 gap-2">
+                    <li><a>Home</a></li>
+                    <li><a>Products</a></li>
+                    <li><a>About</a></li>
+                    <li><a>Contact</a></li>
+                </ul>
+            </div>
+            <div class="navbar-end gap-3">
+
+                <!-- Cart Icon-->
+                <i class="fa-solid fa-cart-arrow-down text-blue-500 text-xl"></i>
+
+                <!-- Mobile Dropdown -->
+                <div class="dropdown md:hidden">
+                    <div tabindex="0" role="button" class="btn btn-ghost">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h8m-8 6h16" />
+                        </svg>
+                    </div>
+
+                    <ul tabindex="0" class="menu menu-sm dropdown-content
+            bg-base-100 text-gray-800
+            rounded-box z-10 mt-3 w-52 p-2 shadow
+            right-0">
+                        <li><a>Home</a></li>
+                        <li><a>Products</a></li>
+                        <li><a>About</a></li>
+                        <li><a>Contact</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </navbar>
+
+    <section class="relative w-full  h-[500px] overflow-hidden">
+
+        <!-- Background Image -->
+        <img src="./assets/banner-image.png" class="absolute inset-0 w-full h-full object-cover" alt="Banner Image">
+
+        <!-- Gradient Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-r 
+        from-[#0f172a]/100 
+        via-[#1e3a8a]/50 
+        to-transparent">
+        </div>
+
+        <!-- Content -->
+        <div class="relative z-10 w-10/12 mx-auto h-full 
+                flex items-center ">
+
+            <div class="text-white max-w-xl">
+                <h1 class="text-3xl lg:text-5xl font-bold mb-6 leading-tight">
+                    Best Collection For You
+                </h1>
+
+                <p class="mb-8 text-lg lg:text-xl text-gray-200 leading-relaxed">
+                    Discover the latest trends in fashion, electronics, and more.
+                    Shop with confidence and style at SwiftCart.
+                </p>
+
+                <button class="px-8 py-3 rounded-lg text-white font-semibold
+                bg-gradient-to-r from-blue-600 to-purple-600
+                hover:from-purple-600 hover:to-blue-600
+                transition-all duration-300 shadow-lg hover:shadow-xl">
+                    Shop Now
+                </button>
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+
+
+</body>
+
+</html>
