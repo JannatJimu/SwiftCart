@@ -4,34 +4,60 @@ const categoryContainer = document.getElementById("categoryContainer");
 const productContainer = document.getElementById("productContainer");
 const loader = document.getElementById("loader");
 
-let cart = [];
+// ------------------ CART SYSTEM ------------------
+function getCart() {
+    return JSON.parse(localStorage.getItem("cart")) || [];
+}
 
-//-----------  LOAD CATEGORIES-------------
+function setCart(cart) {
+    localStorage.setItem("cart", JSON.stringify(cart));
+    updateCartCount();
+}
+
+function updateCartCount() {
+    const cartCountEl = document.getElementById("cartCount");
+    if (cartCountEl) {
+        cartCountEl.innerText = getCart().length;
+    }
+}
+
+function addToCart(id) {
+    id = parseInt(id);
+    let cart = getCart();
+
+    if (!cart.includes(id)) {
+        cart.push(id);
+        setCart(cart);
+    } else {
+        alert("Product already in cart!");
+    }
+}
+
+// ---------------- LOAD CATEGORIES ----------------
 const loadCategories = async () => {
     try {
         const res = await fetch(`${BASE_URL}/products/categories`);
         const categories = await res.json();
 
         let html = `
-    <button data-category=""
-      class="category-btn px-5 py-2 rounded-full 
-      bg-gradient-to-r from-blue-600 to-purple-600 
-      text-white font-semibold shadow">
-      All
-    </button>
-  `;
+            <button data-category=""
+              class="category-btn px-5 py-2 rounded-full 
+              bg-gradient-to-r from-blue-600 to-purple-600 
+              text-white font-semibold shadow">
+              All
+            </button>
+        `;
 
-        //  ------categories.forEach(cat =>{};------
         categories.forEach(cat => {
             html += `
-      <button data-category="${cat}"
-        class="category-btn px-5 py-2 rounded-full 
-      bg-gradient-to-r from-blue-600 to-purple-600 
-      text-white backdrop-blur border border-white/50 
-        shadow hover:scale-105 transition">
-        ${cat}
-      </button>
-    `;
+                <button data-category="${cat}"
+                  class="category-btn px-5 py-2 rounded-full 
+                  bg-gradient-to-r from-blue-600 to-purple-600 
+                  text-white backdrop-blur border border-white/50 
+                  shadow hover:scale-105 transition">
+                  ${cat}
+                </button>
+            `;
         });
 
         categoryContainer.innerHTML = html;
@@ -41,7 +67,7 @@ const loadCategories = async () => {
     }
 };
 
-// ---------- LOAD PRODUCTS------------------------
+// ---------------- LOAD PRODUCTS ----------------
 const loadProducts = async (category = "") => {
     try {
         loader.classList.remove("hidden");
@@ -71,7 +97,7 @@ const loadProducts = async (category = "") => {
     }
 };
 
-//---------- CARD TEMPLATE -----------------
+// ---------------- CARD TEMPLATE -----------------
 function createCard(product) {
     return `
     <div class="relative bg-white/80 backdrop-blur-md shadow-lg hover:shadow-2xl rounded-2xl overflow-hidden transition-transform hover:-translate-y-1 hover:scale-102 duration-300 border border-gray-100">
@@ -99,13 +125,13 @@ function createCard(product) {
 
             <div class="flex justify-around pt-1">
                 <button data-id="${product.id}"
-                    class="details-btn flex items-center justify-center gap-1 px-3 py-1.5 rounded-xl text-blue-900 border border-gray-300 hover:bg-purple-300 text-sm">
+                    class="details-btn flex items-center justify-center gap-1 px-4 py-1.5 rounded-xl text-blue-900 border border-gray-300 hover:bg-purple-300 text-sm">
                     <i class="fa-regular fa-eye text-blue-900"></i>
                     Details
                 </button>
 
                 <button data-id="${product.id}"
-                    class="add-btn flex items-center justify-center gap-1 px-3 py-1.5 rounded-xl
+                    class="add-btn flex items-center justify-center gap-2 px-5 py-1.5 rounded-xl
                            bg-gradient-to-r from-blue-600 to-purple-600
                            text-white font-semibold hover:scale-105 transition text-sm">
                     <i class="fa-solid fa-cart-arrow-down text-white text-lg"></i>
@@ -117,8 +143,7 @@ function createCard(product) {
     `;
 }
 
-
-//-------------------MODAL -------------------
+// ---------------- MODAL -----------------
 const showDetails = async (id) => {
     try {
         const res = await fetch(`${BASE_URL}/products/${id}`);
@@ -135,7 +160,7 @@ const showDetails = async (id) => {
                     <p class="text-gray-500 mb-4">${product.description}</p>
                     <p class="text-xl font-semibold text-gray-800 mb-2">Price: $${product.price}</p>
                     <p class="text-yellow-500 mb-4">Rating: ⭐ ${product.rating.rate}</p>
-                    <button data-id="${product.id}" class="btn w-full  bg-gradient-to-r from-blue-600 to-purple-600
+                    <button data-id="${product.id}" class="modal-add-btn w-full bg-gradient-to-r from-blue-600 to-purple-600
                            text-white font-semibold hover:from-blue-600 hover:to-blue-800 rounded-lg">
                         Add To Cart
                     </button>
@@ -149,13 +174,6 @@ const showDetails = async (id) => {
         console.error("Error loading product details:", error);
     }
 };
-
-
-// -----------------CART-------------------
-function addToCart(id) {
-    cart.push(id);
-    document.getElementById("cartCount").innerText = cart.length;
-}
 
 // ---------------- ACTIVE CATEGORY ------------------
 function setActiveButton(category) {
@@ -172,9 +190,9 @@ function setActiveButton(category) {
     });
 }
 
-// ------------ EVENT LISTENERS----------------
+// ---------------- EVENT LISTENERS ------------------
 
-// Category click 
+// Category click
 categoryContainer.addEventListener("click", (e) => {
     if (e.target.classList.contains("category-btn")) {
         const category = e.target.dataset.category;
@@ -182,22 +200,26 @@ categoryContainer.addEventListener("click", (e) => {
     }
 });
 
-// Product buttons 
+// Product buttons
 productContainer.addEventListener("click", (e) => {
-
-    // Details button
-    if (e.target.classList.contains("details-btn")) {
-        const id = e.target.dataset.id;
-        showDetails(id);
+    const detailsBtn = e.target.closest(".details-btn");
+    if (detailsBtn) {
+        showDetails(detailsBtn.dataset.id);
     }
 
-    // Add button
-    if (e.target.classList.contains("add-btn")) {
-        const id = e.target.dataset.id;
-        addToCart(id);
+    const addBtn = e.target.closest(".add-btn");
+    if (addBtn) {
+        addToCart(addBtn.dataset.id);
+    }
+
+    const modalBtn = e.target.closest(".modal-add-btn");
+    if (modalBtn) {
+        addToCart(modalBtn.dataset.id);
+        document.getElementById("productModal").close();
     }
 });
 
-// ----- INIT ---------------
+// ---------------- INIT ------------------
 loadCategories();
 loadProducts();
+updateCartCount();

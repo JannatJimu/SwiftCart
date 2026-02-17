@@ -39,33 +39,15 @@
       </ul>
     </div>
 
-   <div class="navbar-end gap-3">
-
-                <!-- Cart Icon-->
-                <i class="fa-solid fa-cart-arrow-down text-blue-500 text-xl"></i>
-
-                <!-- Mobile Dropdown -->
-                <div class="dropdown md:hidden">
-                    <div tabindex="0" role="button" class="btn btn-ghost">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h8m-8 6h16" />
-                        </svg>
-                    </div>
-
-                    <ul tabindex="0" class="menu menu-sm dropdown-content
-            bg-base-100 text-gray-800
-            rounded-box z-10 mt-3 w-52 p-2 shadow
-            right-0">
-                        <li><a>Home</a></li>
-                        <li><a href="product.html">Products</a></li>
-                        <li><a>About</a></li>
-                        <li><a>Contact</a></li>
-                    </ul>
-                </div>
-
-            </div>
+    <div class="navbar-end">
+      <div class="relative">
+        <i class="fa-solid fa-cart-shopping text-blue-600 text-xl"></i>
+        <span id="cartCount"
+          class="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-1 rounded-full">
+          0
+        </span>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -105,7 +87,55 @@
     </div>
   </div>
 </dialog>
+<!-- ================= FOOTER ================= -->
+<footer class="bg-slate-900 text-gray-300 py-12 mt-16">
+    <div class="w-10/12 mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
 
+        <div>
+            <h2 class="text-2xl font-bold text-white mb-3">SwiftCart</h2>
+            <p class="text-sm">
+                Your one-stop shop for fashion and lifestyle needs.
+                Quality products, fast delivery, and excellent support.
+            </p>
+        </div>
+
+        <div>
+            <h3 class="text-lg font-semibold text-white mb-3">Quick Links</h3>
+            <ul class="space-y-2 text-sm">
+                <li><a href="index.html" class="hover:text-white">Home</a></li>
+                <li><a href="product.html" class="hover:text-white">Products</a></li>
+                <li><a class="hover:text-white">About</a></li>
+                <li><a class="hover:text-white">Contact</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h3 class="text-lg font-semibold text-white mb-3">Support</h3>
+            <ul class="space-y-2 text-sm">
+                <li><a class="hover:text-white">FAQ</a></li>
+                <li><a class="hover:text-white">Shipping</a></li>
+                <li><a class="hover:text-white">Returns</a></li>
+                <li><a class="hover:text-white">Privacy Policy</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h3 class="text-lg font-semibold text-white mb-3">Newsletter</h3>
+            <div class="flex">
+                <input type="email" placeholder="Enter your email"
+                    class="input input-bordered w-full max-w-xs text-black">
+                <button class="btn bg-blue-600 text-white ml-2">
+                    Subscribe
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="text-center text-sm text-gray-500 mt-10">
+        © 2026 SwiftCart. All rights reserved.
+    </div>
+</footer>
 <script src="./scripts/product.js"></script>
 </body>
 </html>
