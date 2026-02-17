@@ -53,9 +53,8 @@ const loadCategories = async () => {
             html += `
                 <button data-category="${cat}"
                   class="category-btn px-5 py-2 rounded-full 
-                  bg-gradient-to-r from-blue-600 to-purple-600 
-                  text-white backdrop-blur border border-white/50 
-                  shadow hover:scale-105 transition">
+                bg-white text-gray-700 border border-gray-300 
+                  font-semibold shadow hover:scale-105 transition">
                   ${cat}
                 </button>
             `;
@@ -181,15 +180,39 @@ function setActiveButton(category) {
     const buttons = document.querySelectorAll(".category-btn");
 
     buttons.forEach(btn => {
-        btn.classList.remove("bg-blue-600", "text-white");
-        btn.classList.add("btn-outline");
+        btn.classList.remove(
+            "bg-blue-600",
+            "text-white",
+            "shadow-lg",
+            "scale-105"
+        );
 
+        btn.classList.add(
+            "bg-white",
+            "text-gray-700",
+            "border",
+            "border-gray-300"
+        );
+
+        // Active button
         if (btn.dataset.category === category) {
-            btn.classList.remove("btn-outline");
-            btn.classList.add("bg-blue-600", "text-white");
+            btn.classList.remove(
+                "bg-white",
+                "text-gray-700",
+                "border",
+                "border-gray-300"
+            );
+
+            btn.classList.add(
+                "bg-blue-600",
+                "text-white",
+                "shadow-lg",
+                "scale-105"
+            );
         }
     });
 }
+
 
 // ---------------- EVENT LISTENERS ------------------
 
