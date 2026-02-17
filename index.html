@@ -19,81 +19,81 @@
 </head>
 
 <body class="bg-gray-50">
-<!-- NAVBAR -->
-<div class="w-full bg-white shadow-sm sticky top-0 z-50">
-    <div class="navbar w-10/12 mx-auto relative">
+    <!-- NAVBAR -->
+    <div class="w-full bg-white shadow-sm sticky top-0 z-50">
+        <div class="navbar w-10/12 mx-auto relative">
 
-        <div class="navbar-start">
-            <a href="index.html" class="font-bold text-2xl text-blue-700">
-                SwiftCart
-            </a>
-        </div>
-
-        <div class="navbar-center hidden lg:flex">
-            <ul class="menu menu-horizontal gap-4 font-medium">
-                <li><a class="text-blue-600">Home</a></li>
-                <li><a href="product.html">Products</a></li>
-                <li><a>About</a></li>
-                <li><a>Contact</a></li>
-            </ul>
-        </div>
-
-        <div class="navbar-end flex items-center gap-4">
-            <!-- Cart -->
-            <div class="relative">
-                <i class="fa-solid fa-cart-shopping text-blue-600 text-xl"></i>
-                <span id="cartCount"
-                    class="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-1 rounded-full">
-                    0
-                </span>
+            <div class="navbar-start">
+                <a href="index.html" class="font-bold text-2xl text-blue-700">
+                    SwiftCart
+                </a>
             </div>
 
-            <!--for small screens -->
-            <button id="menuToggle" class="lg:hidden text-blue-600 text-2xl">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-        </div>
+            <div class="navbar-center hidden lg:flex">
+                <ul class="menu menu-horizontal gap-4 font-medium">
+                    <li><a class="text-blue-600">Home</a></li>
+                    <li><a href="product.html">Products</a></li>
+                    <li><a>About</a></li>
+                    <li><a>Contact</a></li>
+                </ul>
+            </div>
 
-        <!-- Sidebar menu -->
-        <div id="sidebarMenu"
-            class="fixed top-0 right-0 h-full w-64 bg-white shadow-lg transform translate-x-full transition-transform z-50">
-            <div class="flex justify-between items-center p-6 border-b">
-                <span class="font-bold text-xl text-blue-700">Menu</span>
-                <button id="closeSidebar" class="text-2xl text-gray-600">
-                    <i class="fa-solid fa-xmark"></i>
+            <div class="navbar-end flex items-center gap-4">
+                <!-- Cart -->
+                <div class="relative">
+                    <i class="fa-solid fa-cart-shopping text-blue-600 text-xl"></i>
+                    <span id="cartCount"
+                        class="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-1 rounded-full">
+                        0
+                    </span>
+                </div>
+
+                <!--for small screens -->
+                <button id="menuToggle" class="lg:hidden text-blue-600 text-2xl">
+                    <i class="fa-solid fa-bars"></i>
                 </button>
             </div>
-            <ul class="flex flex-col p-6 gap-4 text-gray-700 font-medium">
-                <li><a href="index.html" class="hover:text-blue-600">Home</a></li>
-                <li><a href="product.html" class="hover:text-blue-600">Products</a></li>
-                <li><a class="hover:text-blue-600">About</a></li>
-                <li><a class="hover:text-blue-600">Contact</a></li>
-            </ul>
+
+            <!-- Sidebar menu -->
+            <div id="sidebarMenu"
+                class="fixed top-0 right-0 h-full w-64 bg-white shadow-lg transform translate-x-full transition-transform z-50">
+                <div class="flex justify-between items-center p-6 border-b">
+                    <span class="font-bold text-xl text-blue-700">Menu</span>
+                    <button id="closeSidebar" class="text-2xl text-gray-600">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <ul class="flex flex-col p-6 gap-4 text-gray-700 font-medium">
+                    <li><a href="index.html" class="hover:text-blue-600">Home</a></li>
+                    <li><a href="product.html" class="hover:text-blue-600">Products</a></li>
+                    <li><a class="hover:text-blue-600">About</a></li>
+                    <li><a class="hover:text-blue-600">Contact</a></li>
+                </ul>
+            </div>
+
         </div>
-
     </div>
-</div>
 
-<script>
-    const menuToggle = document.getElementById("menuToggle");
-    const sidebarMenu = document.getElementById("sidebarMenu");
-    const closeSidebar = document.getElementById("closeSidebar");
+    <script>
+        const menuToggle = document.getElementById("menuToggle");
+        const sidebarMenu = document.getElementById("sidebarMenu");
+        const closeSidebar = document.getElementById("closeSidebar");
 
-    menuToggle.addEventListener("click", () => {
-        sidebarMenu.classList.remove("translate-x-full");
-    });
+        menuToggle.addEventListener("click", () => {
+            sidebarMenu.classList.remove("translate-x-full");
+        });
 
-    closeSidebar.addEventListener("click", () => {
-        sidebarMenu.classList.add("translate-x-full");
-    });
-
-    // Close sidebar when clicking outside
-    window.addEventListener("click", (e) => {
-        if (!sidebarMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+        closeSidebar.addEventListener("click", () => {
             sidebarMenu.classList.add("translate-x-full");
-        }
-    });
-</script>
+        });
+
+        // Close sidebar when clicking outside
+        window.addEventListener("click", (e) => {
+            if (!sidebarMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+                sidebarMenu.classList.add("translate-x-full");
+            }
+        });
+    </script>
 
 
     <!------------ HERO SECTION ------------>
@@ -110,7 +110,7 @@
         <div class="relative z-10 w-10/12 mx-auto h-full flex items-center">
 
             <div class="text-white max-w-xl">
-                <h1 class="text-4xl lg:text-5xl font-bold mb-6">
+                <h1 class="text-3xl lg:text-5xl font-bold mb-6">
                     Best Collection For You
                 </h1>
 
@@ -150,7 +150,7 @@
 
                 <!-- Card 2 -->
                 <div class="bg-white p-6 rounded-xl shadow-sm  hover:shadow-md transition relative">
-                   <div class="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center
+                    <div class="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center
                         absolute left-10 top-0 -translate-y-1/2 -translate-x-1/2">
                         <i class="fa-solid fa-headset text-purple-600 text-xl"></i>
                     </div>
@@ -214,7 +214,7 @@
     </dialog>
     <!--------- FOOTER ---------->
     <footer class="bg-slate-900 text-gray-300 py-12 mt-16">
-        <div class="w-10/12 mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="w-10/12 mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 ">
 
             <div>
                 <h2 class="text-2xl font-bold text-white mb-3">SwiftCart</h2>
@@ -245,7 +245,7 @@
             </div>
 
             <div>
-                <h3 class="text-lg font-semibold text-white mb-3">Newsletter</h3>
+                <h3 class="text-lg font-semibold text-white mb-3">Subscribe to Our Newsletter</h3>
                 <div class="flex">
                     <input type="email" placeholder="Enter your email"
                         class="input input-bordered w-full max-w-xs text-black">
@@ -256,10 +256,24 @@
             </div>
 
         </div>
+        <div class="pt-10 border-b border-gray-400"></div>
 
-        <div class="text-center text-sm text-gray-500 mt-10">
-            © 2026 SwiftCart. All rights reserved.
-        </div>
+        <div class="w-10/12 mx-auto flex flex-col md:flex-row items-center justify-between py-4">
+    <!-- Left: copyright -->
+    <div class="text-sm text-gray-500">
+        © 2026 SwiftCart, Inc. All rights reserved.
+    </div>
+
+    <!-- Right: social icons -->
+    <div class="flex gap-4 items-center mt-3 md:mt-0">
+        <a href="#"><i class="fa-brands fa-facebook lg:text-2xl "></i></a>
+        <a href="#"><i class="fa-brands fa-instagram lg:text-2xl "></i></a>
+        <a href="#"><i class="fa-brands fa-linkedin lg:text-2xl "></i></a>
+        <a href="#"><i class="fa-brands fa-youtube lg:text-2xl "></i></a>
+    </div>
+</div>
+
+
     </footer>
 
     <script src="./scripts/home.js"></script>
