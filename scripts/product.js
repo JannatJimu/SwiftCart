@@ -161,7 +161,7 @@ const showDetails = async (id) => {
                     <p class="text-xl font-semibold text-gray-800 mb-2">Price: $${product.price}</p>
                     <p class="text-yellow-500 mb-4">Rating: ⭐ ${product.rating.rate}</p>
                     <button data-id="${product.id}" class="modal-add-btn w-full bg-gradient-to-r from-blue-600 to-purple-600
-                           text-white font-semibold hover:from-blue-600 hover:to-blue-800 rounded-lg">
+                           text-white font-semibold hover:from-blue-600 hover:to-blue-800 rounded-lg py-2">
                         Add To Cart
                     </button>
                 </div>

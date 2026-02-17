@@ -183,7 +183,7 @@ async function showDetails(id) {
                 </div>
 
                 <button data-id="${product.id}"
-                    class="modal-add-btn w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-lg hover:scale-105 transition">
+                    class="modal-add-btn w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-2 rounded-lg hover:scale-105 transition">
                     Add To Cart
                 </button>
 
