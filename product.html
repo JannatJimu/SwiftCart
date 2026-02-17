@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SwiftCart - Products</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
+
+  <!-- DaisyUI -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet"/>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <link rel="stylesheet" href="./styles/style.css">
+</head>
+
+<body class="bg-gray-50">
+
+<!-- NAVBAR -->
+<div class="w-full bg-white shadow-sm sticky top-0 z-50">
+  <div class="navbar w-10/12 mx-auto">
+
+    <div class="navbar-start">
+      <a href="index.html" class="font-bold text-2xl text-blue-700">
+        SwiftCart
+      </a>
+    </div>
+
+    <div class="navbar-center hidden lg:flex">
+      <ul class="menu menu-horizontal px-1 gap-4 font-medium">
+        <li><a href="index.html">Home</a></li>
+        <li><a class="text-blue-600">Products</a></li>
+        <li><a>About</a></li>
+        <li><a>Contact</a></li>
+      </ul>
+    </div>
+
+   <div class="navbar-end gap-3">
+
+                <!-- Cart Icon-->
+                <i class="fa-solid fa-cart-arrow-down text-blue-500 text-xl"></i>
+
+                <!-- Mobile Dropdown -->
+                <div class="dropdown md:hidden">
+                    <div tabindex="0" role="button" class="btn btn-ghost">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h8m-8 6h16" />
+                        </svg>
+                    </div>
+
+                    <ul tabindex="0" class="menu menu-sm dropdown-content
+            bg-base-100 text-gray-800
+            rounded-box z-10 mt-3 w-52 p-2 shadow
+            right-0">
+                        <li><a>Home</a></li>
+                        <li><a href="product.html">Products</a></li>
+                        <li><a>About</a></li>
+                        <li><a>Contact</a></li>
+                    </ul>
+                </div>
+
+            </div>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<section class="w-11/12 mx-auto py-14">
+
+  <div class="text-center mb-10">
+    <h2 class="text-4xl font-bold text-gray-800 mb-2">
+      Our Products
+    </h2>
+    <p class="text-gray-500">
+      Discover quality products at the best price
+    </p>
+
+    <div id="categoryContainer"
+      class="flex flex-wrap justify-center gap-3 mt-6"></div>
+  </div>
+
+  <div id="loader" class="text-center py-10 hidden">
+    <span class="loading loading-spinner loading-lg text-blue-600"></span>
+  </div>
+
+  <div id="productContainer"
+    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"></div>
+</section>
+
+<!-- MODAL -->
+<dialog id="productModal" class="modal">
+  <div class="modal-box max-w-2xl p-6">
+    <div id="modalContent"></div>
+    <div class="modal-action">
+      <form method="dialog">
+        <button class="btn  px-3 py-1.5 rounded-xl
+                           bg-gradient-to-r from-blue-600 to-purple-600
+                           text-white font-semibold hover:scale-105 transition text-sm">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
+
+<script src="./scripts/product.js"></script>
+</body>
+</html>
