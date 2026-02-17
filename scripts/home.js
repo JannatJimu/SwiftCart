@@ -10,6 +10,7 @@ function setCart(cart) {
     updateCartCount();
 }
 
+// Update cart count in navbar
 function updateCartCount() {
     const cartCountEl = document.getElementById("cartCount");
     if (cartCountEl) {
@@ -17,6 +18,7 @@ function updateCartCount() {
     }
 }
 
+// Add product to cart
 function addToCart(id) {
     id = parseInt(id);
     let cart = getCart();
@@ -24,10 +26,77 @@ function addToCart(id) {
     if (!cart.includes(id)) {
         cart.push(id);
         setCart(cart);
+        renderCartSidebar(); 
     } else {
         alert("Product already in cart!");
     }
 }
+
+// ------------------ CART SIDEBAR ------------------
+const cartSidebar = document.getElementById("cartSidebar");
+const cartToggle = document.getElementById("cartToggle");
+const closeCart = document.getElementById("closeCart");
+const cartItemsContainer = document.getElementById("cartItems");
+const cartTotalEl = document.getElementById("cartTotal");
+
+// Open/close cart sidebar
+cartToggle.addEventListener("click", () => {
+    sidebarMenu.classList.add("translate-x-full"); 
+    renderCartSidebar();
+    cartSidebar.classList.remove("translate-x-full");
+});
+
+closeCart.addEventListener("click", () => cartSidebar.classList.add("translate-x-full"));
+
+// Render cart items in sidebar
+function renderCartSidebar() {
+    const cartIds = getCart();
+    cartItemsContainer.innerHTML = "";
+
+    if (cartIds.length === 0) {
+        cartItemsContainer.innerHTML = `<p class="text-gray-500 text-center mt-10">Your cart is empty.</p>`;
+        cartTotalEl.innerText = "$0.00";
+        return;
+    }
+
+    Promise.all(cartIds.map(id => fetch(`${BASE_URL}/products/${id}`).then(res => res.json())))
+        .then(products => {
+            let total = 0;
+            products.forEach(product => {
+                total += product.price;
+
+                const itemEl = document.createElement("div");
+                itemEl.className = "flex items-center gap-3 border-b pb-3";
+
+                itemEl.innerHTML = `
+                    <img src="${product.image}" class="h-16 w-16 object-contain rounded-lg"/>
+                    <div class="flex-1">
+                        <h4 class="font-semibold text-gray-800 text-sm line-clamp-1">${product.title}</h4>
+                        <p class="text-gray-500 text-sm">$${product.price}</p>
+                    </div>
+                    <button data-id="${product.id}" class="removeCartBtn text-red-500 hover:text-red-700">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                `;
+
+                cartItemsContainer.appendChild(itemEl);
+            });
+
+            cartTotalEl.innerText = `$${total.toFixed(2)}`;
+        });
+}
+
+// Remove item from cart
+cartItemsContainer.addEventListener("click", (e) => {
+    const removeBtn = e.target.closest(".removeCartBtn");
+    if (!removeBtn) return;
+
+    const id = parseInt(removeBtn.dataset.id);
+    let cart = getCart();
+    cart = cart.filter(pid => pid !== id);
+    setCart(cart);
+    renderCartSidebar();
+});
 
 // ---------------- CARD TEMPLATE -----------------
 function createTrendingCard(product) {

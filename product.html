@@ -71,6 +71,7 @@
             </ul>
         </div>
 
+        
     </div>
 </div>
 
@@ -93,6 +94,23 @@
             sidebarMenu.classList.add("translate-x-full");
         }
     });
+    // ---------------- NAVBAR ACTIVE LINK -----------------
+function setNavbarActive() {
+    const navbarLinks = document.querySelectorAll(".navbar-center a, #sidebarMenu a");
+    const currentPage = window.location.pathname.split("/").pop(); 
+
+    navbarLinks.forEach(link => {
+        link.classList.remove("text-blue-600", "font-bold"); 
+        const linkPage = link.getAttribute("href");
+        if (linkPage === currentPage) {
+            link.classList.add("text-blue-600", "font-bold"); 
+        }
+    });
+}
+
+
+setNavbarActive();
+
 </script>
 
 

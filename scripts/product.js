@@ -33,6 +33,7 @@ function addToCart(id) {
     }
 }
 
+
 // ---------------- LOAD CATEGORIES ----------------
 const loadCategories = async () => {
     try {
