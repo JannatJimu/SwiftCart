@@ -1,171 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SwiftCart - Products</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SwiftCart - Products</title>
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
 
-  <!-- DaisyUI -->
-  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet"/>
+    <!-- DaisyUI -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" />
 
-  <!-- Tailwind -->
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Tailwind -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
-  <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/style.css">
 </head>
 
 <body class="bg-gray-50">
-<!-- NAVBAR -->
-<div class="w-full bg-white shadow-sm sticky top-0 z-50">
-    <div class="navbar w-10/12 mx-auto relative">
+    <!-- NAVBAR -->
+    <div class="w-full bg-white shadow-sm sticky top-0 z-50">
+        <div class="navbar w-10/12 mx-auto relative">
 
-        <div class="navbar-start">
-            <a href="index.html" class="font-bold text-2xl text-blue-700">
-                SwiftCart
-            </a>
-        </div>
-
-        <div class="navbar-center hidden lg:flex">
-            <ul class="menu menu-horizontal gap-4 font-medium">
-                <li><a href="index.html" class="text-blue-600">Home</a></li>
-                <li><a href="product.html">Products</a></li>
-                <li><a>About</a></li>
-                <li><a>Contact</a></li>
-            </ul>
-        </div>
-
-        <div class="navbar-end flex items-center gap-4">
-            <!-- Cart -->
-            <div class="relative">
-                <i class="fa-solid fa-cart-shopping text-blue-600 text-xl"></i>
-                <span id="cartCount"
-                    class="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-1 rounded-full">
-                    0
-                </span>
+            <div class="navbar-start">
+                <a href="index.html" class="font-bold text-2xl text-blue-700">
+                    SwiftCart
+                </a>
             </div>
 
-            <!--for small screens -->
-            <button id="menuToggle" class="lg:hidden text-blue-600 text-2xl">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-        </div>
+            <div class="navbar-center hidden lg:flex">
+                <ul class="menu menu-horizontal gap-4 font-medium">
+                    <li><a href="index.html" class="">Home</a></li>
+                    <li><a href="product.html">Products</a></li>
+                    <li><a>About</a></li>
+                    <li><a>Contact</a></li>
+                </ul>
+            </div>
 
-        <!-- Sidebar menu -->
-        <div id="sidebarMenu"
-            class="fixed top-0 right-0 h-full w-64 bg-white shadow-lg transform translate-x-full transition-transform z-50">
-            <div class="flex justify-between items-center p-6 border-b">
-                <span class="font-bold text-xl text-blue-700">Menu</span>
-                <button id="closeSidebar" class="text-2xl text-gray-600">
-                    <i class="fa-solid fa-xmark"></i>
+            <div class="navbar-end flex items-center gap-4">
+                <!-- Cart -->
+                <div class="relative">
+                    <i class="fa-solid fa-cart-shopping text-blue-600 text-xl"></i>
+                    <span id="cartCount"
+                        class="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-1 rounded-full">
+                        0
+                    </span>
+                </div>
+
+                <!--for small screens -->
+                <button id="menuToggle" class="lg:hidden text-blue-600 text-2xl">
+                    <i class="fa-solid fa-bars"></i>
                 </button>
             </div>
-            <ul class="flex flex-col p-6 gap-4 text-gray-700 font-medium">
-                <li><a href="index.html" class="hover:text-blue-600">Home</a></li>
-                <li><a href="product.html" class="hover:text-blue-600">Products</a></li>
-                <li><a class="hover:text-blue-600">About</a></li>
-                <li><a class="hover:text-blue-600">Contact</a></li>
-            </ul>
+
+            <!-- Sidebar menu -->
+            <div id="sidebarMenu"
+                class="fixed top-0 right-0 h-full w-64 bg-white shadow-lg transform translate-x-full transition-transform z-50">
+                <div class="flex justify-between items-center p-6 border-b">
+                    <span class="font-bold text-xl text-blue-700">Menu</span>
+                    <button id="closeSidebar" class="text-2xl text-gray-600">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <ul class="flex flex-col p-6 gap-4 text-gray-700 font-medium">
+                    <li><a href="index.html" class="hover:text-blue-600">Home</a></li>
+                    <li><a href="product.html" class="hover:text-blue-600">Products</a></li>
+                    <li><a class="hover:text-blue-600">About</a></li>
+                    <li><a class="hover:text-blue-600">Contact</a></li>
+                </ul>
+            </div>
+
+
+        </div>
+    </div>
+
+    <script>
+        const menuToggle = document.getElementById("menuToggle");
+        const sidebarMenu = document.getElementById("sidebarMenu");
+        const closeSidebar = document.getElementById("closeSidebar");
+
+        menuToggle.addEventListener("click", () => {
+            sidebarMenu.classList.remove("translate-x-full");
+        });
+
+        closeSidebar.addEventListener("click", () => {
+            sidebarMenu.classList.add("translate-x-full");
+        });
+
+        // Close sidebar when clicking outside
+        window.addEventListener("click", (e) => {
+            if (!sidebarMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+                sidebarMenu.classList.add("translate-x-full");
+            }
+        });
+        // ---------------- NAVBAR ACTIVE LINK -----------------
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const currentPath = window.location.pathname;
+            const navLinks = document.querySelectorAll(".navbar-center a, #sidebarMenu a");
+
+            navLinks.forEach(link => {
+                const linkHref = link.getAttribute("href");
+                if (!linkHref) return;
+
+                link.classList.remove("text-blue-600", "font-bold");
+
+                if (
+                    (currentPath === "/" && linkHref === "index.html") ||
+                    currentPath.endsWith(linkHref)
+                ) {
+                    link.classList.add("text-blue-600", "font-bold");
+                }
+            });
+        });
+    </script>
+
+
+
+    <!-- PRODUCTS -->
+    <section class="w-11/12 mx-auto py-14">
+
+        <div class="text-center mb-10">
+            <h2 class="text-4xl font-bold text-gray-800 mb-2">
+                Our Products
+            </h2>
+            <p class="text-gray-500">
+                Discover quality products at the best price
+            </p>
+
+            <div id="categoryContainer" class="flex flex-wrap justify-center gap-3 mt-6"></div>
         </div>
 
-        
-    </div>
-</div>
+        <div id="loader" class="text-center py-10 hidden">
+            <span class="loading loading-spinner loading-lg text-blue-600"></span>
+        </div>
 
-<script>
-    const menuToggle = document.getElementById("menuToggle");
-    const sidebarMenu = document.getElementById("sidebarMenu");
-    const closeSidebar = document.getElementById("closeSidebar");
+        <div id="productContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"></div>
+    </section>
 
-    menuToggle.addEventListener("click", () => {
-        sidebarMenu.classList.remove("translate-x-full");
-    });
-
-    closeSidebar.addEventListener("click", () => {
-        sidebarMenu.classList.add("translate-x-full");
-    });
-
-    // Close sidebar when clicking outside
-    window.addEventListener("click", (e) => {
-        if (!sidebarMenu.contains(e.target) && !menuToggle.contains(e.target)) {
-            sidebarMenu.classList.add("translate-x-full");
-        }
-    });
-    // ---------------- NAVBAR ACTIVE LINK -----------------
-function setNavbarActive() {
-    const navbarLinks = document.querySelectorAll(".navbar-center a, #sidebarMenu a");
-
-    // Get current page without extension
-    let currentPage = window.location.pathname.split("/").pop();
-
-    if (currentPage === "") {
-        currentPage = "index";
-    }
-
-    currentPage = currentPage.replace(".html", "");
-
-    navbarLinks.forEach(link => {
-        link.classList.remove("text-blue-600", "font-bold");
-
-        let linkPage = link.getAttribute("href");
-        if (!linkPage) return;
-
-        linkPage = linkPage.replace(".html", "");
-
-        if (linkPage === currentPage) {
-            link.classList.add("text-blue-600", "font-bold");
-        }
-    });
-}
-
-
-
-setNavbarActive();
-
-</script>
-
-
-<!-- PRODUCTS -->
-<section class="w-11/12 mx-auto py-14">
-
-  <div class="text-center mb-10">
-    <h2 class="text-4xl font-bold text-gray-800 mb-2">
-      Our Products
-    </h2>
-    <p class="text-gray-500">
-      Discover quality products at the best price
-    </p>
-
-    <div id="categoryContainer"
-      class="flex flex-wrap justify-center gap-3 mt-6"></div>
-  </div>
-
-  <div id="loader" class="text-center py-10 hidden">
-    <span class="loading loading-spinner loading-lg text-blue-600"></span>
-  </div>
-
-  <div id="productContainer"
-    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"></div>
-</section>
-
-<!-- MODAL -->
-<dialog id="productModal" class="modal">
-  <div class="modal-box max-w-2xl p-6">
-    <div id="modalContent"></div>
-    <div class="modal-action">
-      <form method="dialog">
-        <button class="btn  px-3 py-1.5 rounded-xl
+    <!-- MODAL -->
+    <dialog id="productModal" class="modal">
+        <div class="modal-box max-w-2xl p-6">
+            <div id="modalContent"></div>
+            <div class="modal-action">
+                <form method="dialog">
+                    <button class="btn  px-3 py-1.5 rounded-xl
                            bg-gradient-to-r from-blue-600 to-purple-600
                            text-white font-semibold hover:scale-105 transition text-sm">Close</button>
-      </form>
-    </div>
-  </div>
-</dialog>
-<!-------- FOOTER ------------------->
-<footer class="bg-slate-900 text-gray-300 py-12 mt-16">
+                </form>
+            </div>
+        </div>
+    </dialog>
+    <!-------- FOOTER ------------------->
+    <footer class="bg-slate-900 text-gray-300 py-12 mt-16">
         <div class="w-10/12 mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 ">
 
             <div>
@@ -211,22 +199,23 @@ setNavbarActive();
         <div class="pt-10 border-b border-gray-400"></div>
 
         <div class="w-10/12 mx-auto flex flex-col md:flex-row items-center justify-between py-4">
-    <!-- Left: copyright -->
-    <div class="text-sm text-gray-500">
-        © 2026 SwiftCart, Inc. All rights reserved.
-    </div>
+            <!-- Left: copyright -->
+            <div class="text-sm text-gray-500">
+                © 2026 SwiftCart, Inc. All rights reserved.
+            </div>
 
-    <!-- Right: social icons -->
-    <div class="flex gap-4 items-center mt-3 md:mt-0">
-        <a href="#"><i class="fa-brands fa-facebook lg:text-2xl "></i></a>
-        <a href="#"><i class="fa-brands fa-instagram lg:text-2xl "></i></a>
-        <a href="#"><i class="fa-brands fa-linkedin lg:text-2xl "></i></a>
-        <a href="#"><i class="fa-brands fa-youtube lg:text-2xl "></i></a>
-    </div>
-</div>
+            <!-- Right: social icons -->
+            <div class="flex gap-4 items-center mt-3 md:mt-0">
+                <a href="#"><i class="fa-brands fa-facebook lg:text-2xl "></i></a>
+                <a href="#"><i class="fa-brands fa-instagram lg:text-2xl "></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin lg:text-2xl "></i></a>
+                <a href="#"><i class="fa-brands fa-youtube lg:text-2xl "></i></a>
+            </div>
+        </div>
 
 
     </footer>
-<script src="./scripts/product.js"></script>
+    <script src="./scripts/product.js"></script>
 </body>
+
 </html>

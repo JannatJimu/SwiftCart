@@ -31,7 +31,7 @@
 
             <div class="navbar-center hidden lg:flex">
                 <ul class="menu menu-horizontal gap-4 font-semibold text-gray-700">
-                    <li><a class="text-blue-600 ">Home</a></li>
+                    <li><a href="index.html">Home</a></li>
                     <li><a href="product.html">Products</a></li>
                     <li><a>About</a></li>
                     <li><a>Contact</a></li>
@@ -82,7 +82,7 @@
                     </button>
                 </div>
                 <div class="p-6 flex-1 flex flex-col gap-4 overflow-y-auto" id="cartItems">
-                    
+
                 </div>
                 <div class="p-6 border-t flex flex-col gap-3">
                     <div class="flex justify-between font-semibold text-gray-700">
@@ -309,6 +309,30 @@
 
 
     </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const currentPath = window.location.pathname;
+            const navLinks = document.querySelectorAll(".navbar-center a, #sidebarMenu a");
+
+            navLinks.forEach(link => {
+                const linkHref = link.getAttribute("href");
+                if (!linkHref) return;
+
+                link.classList.remove("text-blue-600", "font-bold");
+
+                if (
+                    (currentPath === "/" && linkHref === "index.html") ||
+                    currentPath.endsWith(linkHref)
+                ) {
+                    link.classList.add("text-blue-600", "font-bold");
+                }
+            });
+        });
+
+    </script>
+
+
+
 
     <script src="./scripts/home.js"></script>
 </body>
