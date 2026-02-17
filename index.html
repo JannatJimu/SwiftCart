@@ -19,38 +19,81 @@
 </head>
 
 <body class="bg-gray-50">
+<!-- NAVBAR -->
+<div class="w-full bg-white shadow-sm sticky top-0 z-50">
+    <div class="navbar w-10/12 mx-auto relative">
 
-    <!------ NAVBAR --------->
-    <div class="w-full bg-white shadow-sm sticky top-0 z-50">
-        <div class="navbar w-10/12 mx-auto">
-
-            <div class="navbar-start">
-                <a href="index.html" class="font-bold text-2xl text-blue-700">
-                    SwiftCart
-                </a>
-            </div>
-
-            <div class="navbar-center hidden lg:flex">
-                <ul class="menu menu-horizontal gap-4 font-medium">
-                    <li><a class="text-blue-600">Home</a></li>
-                    <li><a href="product.html">Products</a></li>
-                    <li><a>About</a></li>
-                    <li><a>Contact</a></li>
-                </ul>
-            </div>
-
-            <div class="navbar-end">
-                <div class="relative">
-                    <i class="fa-solid fa-cart-shopping text-blue-600 text-xl"></i>
-                    <span id="cartCount"
-                        class="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-1 rounded-full">
-                        0
-                    </span>
-                </div>
-            </div>
-
+        <div class="navbar-start">
+            <a href="index.html" class="font-bold text-2xl text-blue-700">
+                SwiftCart
+            </a>
         </div>
+
+        <div class="navbar-center hidden lg:flex">
+            <ul class="menu menu-horizontal gap-4 font-medium">
+                <li><a class="text-blue-600">Home</a></li>
+                <li><a href="product.html">Products</a></li>
+                <li><a>About</a></li>
+                <li><a>Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="navbar-end flex items-center gap-4">
+            <!-- Cart -->
+            <div class="relative">
+                <i class="fa-solid fa-cart-shopping text-blue-600 text-xl"></i>
+                <span id="cartCount"
+                    class="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-1 rounded-full">
+                    0
+                </span>
+            </div>
+
+            <!--for small screens -->
+            <button id="menuToggle" class="lg:hidden text-blue-600 text-2xl">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Sidebar menu -->
+        <div id="sidebarMenu"
+            class="fixed top-0 right-0 h-full w-64 bg-white shadow-lg transform translate-x-full transition-transform z-50">
+            <div class="flex justify-between items-center p-6 border-b">
+                <span class="font-bold text-xl text-blue-700">Menu</span>
+                <button id="closeSidebar" class="text-2xl text-gray-600">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <ul class="flex flex-col p-6 gap-4 text-gray-700 font-medium">
+                <li><a href="index.html" class="hover:text-blue-600">Home</a></li>
+                <li><a href="product.html" class="hover:text-blue-600">Products</a></li>
+                <li><a class="hover:text-blue-600">About</a></li>
+                <li><a class="hover:text-blue-600">Contact</a></li>
+            </ul>
+        </div>
+
     </div>
+</div>
+
+<script>
+    const menuToggle = document.getElementById("menuToggle");
+    const sidebarMenu = document.getElementById("sidebarMenu");
+    const closeSidebar = document.getElementById("closeSidebar");
+
+    menuToggle.addEventListener("click", () => {
+        sidebarMenu.classList.remove("translate-x-full");
+    });
+
+    closeSidebar.addEventListener("click", () => {
+        sidebarMenu.classList.add("translate-x-full");
+    });
+
+    // Close sidebar when clicking outside
+    window.addEventListener("click", (e) => {
+        if (!sidebarMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+            sidebarMenu.classList.add("translate-x-full");
+        }
+    });
+</script>
 
 
     <!------------ HERO SECTION ------------>
