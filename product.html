@@ -98,18 +98,29 @@
 function setNavbarActive() {
     const navbarLinks = document.querySelectorAll(".navbar-center a, #sidebarMenu a");
 
-    const currentPage = window.location.pathname.split("/").pop() || "index.html";
+    // Get current page without extension
+    let currentPage = window.location.pathname.split("/").pop();
+
+    if (currentPage === "") {
+        currentPage = "index";
+    }
+
+    currentPage = currentPage.replace(".html", "");
 
     navbarLinks.forEach(link => {
         link.classList.remove("text-blue-600", "font-bold");
 
-        const linkPage = link.getAttribute("href");
+        let linkPage = link.getAttribute("href");
+        if (!linkPage) return;
+
+        linkPage = linkPage.replace(".html", "");
 
         if (linkPage === currentPage) {
             link.classList.add("text-blue-600", "font-bold");
         }
     });
 }
+
 
 
 setNavbarActive();
